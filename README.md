@@ -48,10 +48,3 @@ Il sito sarà disponibile a un indirizzo simile a:
 Il sito contiene `noindex,nofollow`, quindi chiede ai motori di ricerca di non indicizzarlo. Non è però protetto da password: chi riceve il link può aprirlo e condividerlo.
 
 Non pubblicare nel sito codici di accesso, indirizzi completi o altre informazioni sensibili.
-
-## Crediti immagini esterne
-
-Le immagini panoramiche attualmente usate nelle sezioni principali provengono da fonti turistiche di Les Diablerets / Glacier 3000 e vengono caricate tramite URL esterni. Prima di una diffusione pubblica o commerciale, verificare le condizioni di utilizzo o sostituirle con fotografie personali.
-
-- Hero e sezione inverno: Glacier 3000 / Alpes Vaudoises
-- Sezione estate e contatti: The Glacier Hotel / Glacier 3000
