@@ -29,10 +29,63 @@ const translations = {
   }
 };
 
+
+Object.assign(translations.it,{
+  navAvailability:'Disponibilità & prezzi',checkDates:'Controlla date e prezzi',exploreDiablerets:'Esplora Les Diablerets',exploreGlacier:'Scopri Glacier 3000',availabilityEyebrow:'Disponibilità & prezzi',availabilityTitle:'Scegli le date.<br>Calcola il soggiorno.',availabilityText:'Seleziona arrivo e partenza nel calendario. Il prezzo è indicativo e la prenotazione viene confermata personalmente via WhatsApp.',lowSeason:'notte · bassa stagione',highSeason:'notte · alta stagione',cleaningFee:'pulizia finale',available:'Disponibile',selected:'Selezionato',unavailable:'Non disponibile',yourStay:'Il tuo soggiorno',arrival:'Arrivo',departure:'Partenza',nights:'Notti',stayPrice:'Soggiorno',cleaning:'Pulizia finale',estimatedTotal:'Totale indicativo',quoteNote:'Soggiorno minimo: 2 notti. Disponibilità e prezzo finale da confermare.',requestBooking:'Richiedi la prenotazione',resetDates:'Cancella le date'
+});
+Object.assign(translations.fr,{
+  navAvailability:'Disponibilités & tarifs',checkDates:'Voir les dates et tarifs',exploreDiablerets:'Explorer Les Diablerets',exploreGlacier:'Découvrir Glacier 3000',availabilityEyebrow:'Disponibilités & tarifs',availabilityTitle:'Choisissez vos dates.<br>Estimez le séjour.',availabilityText:'Sélectionnez votre arrivée et votre départ. Le tarif est indicatif et la réservation est confirmée personnellement sur WhatsApp.',lowSeason:'nuit · basse saison',highSeason:'nuit · haute saison',cleaningFee:'nettoyage final',available:'Disponible',selected:'Sélectionné',unavailable:'Indisponible',yourStay:'Votre séjour',arrival:'Arrivée',departure:'Départ',nights:'Nuits',stayPrice:'Séjour',cleaning:'Nettoyage final',estimatedTotal:'Total indicatif',quoteNote:'Séjour minimum : 2 nuits. Disponibilité et tarif final à confirmer.',requestBooking:'Demander la réservation',resetDates:'Effacer les dates'
+});
+Object.assign(translations.en,{
+  navAvailability:'Availability & rates',checkDates:'Check dates and rates',exploreDiablerets:'Explore Les Diablerets',exploreGlacier:'Discover Glacier 3000',availabilityEyebrow:'Availability & rates',availabilityTitle:'Choose your dates.<br>Estimate your stay.',availabilityText:'Select arrival and departure in the calendar. The price is indicative and the booking is personally confirmed through WhatsApp.',lowSeason:'night · low season',highSeason:'night · high season',cleaningFee:'final cleaning',available:'Available',selected:'Selected',unavailable:'Unavailable',yourStay:'Your stay',arrival:'Arrival',departure:'Departure',nights:'Nights',stayPrice:'Stay',cleaning:'Final cleaning',estimatedTotal:'Estimated total',quoteNote:'Minimum stay: 2 nights. Availability and final price must be confirmed.',requestBooking:'Request booking',resetDates:'Clear dates'
+});
+
 let currentLang=localStorage.getItem('ldpLang')||(navigator.language||'it').slice(0,2);if(!translations[currentLang])currentLang='it';
-function applyLanguage(lang){currentLang=translations[lang]?lang:'it';const t=translations[currentLang];document.documentElement.lang=currentLang;document.title=t.pageTitle;document.querySelector('meta[name="description"]').setAttribute('content',t.metaDescription);document.querySelectorAll('[data-i18n]').forEach(el=>{const key=el.dataset.i18n;if(t[key])el.textContent=t[key]});document.querySelectorAll('[data-i18n-html]').forEach(el=>{const key=el.dataset.i18nHtml;if(t[key])el.innerHTML=t[key]});document.querySelectorAll('[data-lang]').forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===currentLang));document.querySelectorAll('.js-whatsapp').forEach(link=>{const message=t[link.dataset.messageKey||'whatsappAvailability'];link.href=`https://wa.me/${PHONE}?text=${encodeURIComponent(message)}`;link.target='_blank';link.rel='noopener'});localStorage.setItem('ldpLang',currentLang)}
+function applyLanguage(lang){currentLang=translations[lang]?lang:'it';const t=translations[currentLang];document.documentElement.lang=currentLang;document.title=t.pageTitle;document.querySelector('meta[name="description"]').setAttribute('content',t.metaDescription);document.querySelectorAll('[data-i18n]').forEach(el=>{const key=el.dataset.i18n;if(t[key])el.textContent=t[key]});document.querySelectorAll('[data-i18n-html]').forEach(el=>{const key=el.dataset.i18nHtml;if(t[key])el.innerHTML=t[key]});document.querySelectorAll('[data-lang]').forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===currentLang));document.querySelectorAll('.js-whatsapp').forEach(link=>{const message=t[link.dataset.messageKey||'whatsappAvailability'];link.href=`https://wa.me/${PHONE}?text=${encodeURIComponent(message)}`;link.target='_blank';link.rel='noopener'});localStorage.setItem('ldpLang',currentLang);if(window.renderBookingCalendar)window.renderBookingCalendar()}
 document.querySelectorAll('[data-lang]').forEach(btn=>btn.addEventListener('click',()=>applyLanguage(btn.dataset.lang)));applyLanguage(currentLang);
 document.getElementById('year').textContent=new Date().getFullYear();
 const header=document.querySelector('.site-header');window.addEventListener('scroll',()=>header.classList.toggle('scrolled',window.scrollY>40),{passive:true});
 const menuButton=document.querySelector('.menu-toggle');const nav=document.querySelector('.main-nav');menuButton.addEventListener('click',()=>{const open=nav.classList.toggle('open');menuButton.setAttribute('aria-expanded',String(open))});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menuButton.setAttribute('aria-expanded','false')}));
 if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el))}else{document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'))}
+
+
+// Calendario e preventivo: funziona interamente su GitHub Pages, senza server.
+const cfg=window.BOOKING_CONFIG||{currency:'CHF',cleaningFee:90,minimumNights:2,rates:[{months:[1,2,3,4,5,6,7,8,9,10,11,12],nightly:150}],unavailableRanges:[]};
+let calendarMonth=new Date();calendarMonth=new Date(calendarMonth.getFullYear(),calendarMonth.getMonth(),1);
+let arrivalDate=null,departureDate=null;
+const iso=d=>{const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),day=String(d.getDate()).padStart(2,'0');return `${y}-${m}-${day}`};
+const fromIso=x=>{const [y,m,d]=x.split('-').map(Number);return new Date(y,m-1,d)};
+const dayStart=d=>new Date(d.getFullYear(),d.getMonth(),d.getDate());
+const isUnavailable=d=>(cfg.unavailableRanges||[]).some(r=>d>=fromIso(r.start)&&d<=fromIso(r.end));
+const rateFor=d=>{const month=d.getMonth()+1;const rate=(cfg.rates||[]).find(r=>r.months.includes(month));return rate?rate.nightly:0};
+const locale=()=>currentLang==='fr'?'fr-CH':currentLang==='en'?'en-GB':'it-CH';
+const money=n=>`${cfg.currency} ${Math.round(n).toLocaleString(locale())}`;
+function rangeIsFree(a,b){for(let d=new Date(a);d<b;d.setDate(d.getDate()+1)){if(isUnavailable(d))return false}return true}
+function selectCalendarDate(d){
+  if(!arrivalDate||departureDate||d<arrivalDate){arrivalDate=d;departureDate=null}
+  else if(d>arrivalDate){if(rangeIsFree(arrivalDate,d)){departureDate=d}else{arrivalDate=d;departureDate=null}}
+  renderBookingCalendar();
+}
+function bookingMessage(){
+ const t=translations[currentLang];
+ if(!arrivalDate||!departureDate)return t.whatsappAvailability;
+ const nights=Math.round((departureDate-arrivalDate)/86400000);let stay=0;for(let d=new Date(arrivalDate);d<departureDate;d.setDate(d.getDate()+1))stay+=rateFor(d);
+ const dateFmt=d=>d.toLocaleDateString(locale(),{day:'2-digit',month:'long',year:'numeric'});
+ if(currentLang==='fr')return `Bonjour ! Je souhaite demander le séjour aux Diablerets du ${dateFmt(arrivalDate)} au ${dateFmt(departureDate)} (${nights} nuits). Total indicatif : ${money(stay+cfg.cleaningFee)}. Pouvez-vous confirmer la disponibilité et le tarif ?`;
+ if(currentLang==='en')return `Hi! I would like to request a stay in Les Diablerets from ${dateFmt(arrivalDate)} to ${dateFmt(departureDate)} (${nights} nights). Estimated total: ${money(stay+cfg.cleaningFee)}. Could you confirm availability and the final rate?`;
+ return `Ciao! Vorrei richiedere un soggiorno a Les Diablerets dal ${dateFmt(arrivalDate)} al ${dateFmt(departureDate)} (${nights} notti). Totale indicativo: ${money(stay+cfg.cleaningFee)}. Puoi confermare disponibilità e prezzo finale?`;
+}
+window.renderBookingCalendar=function(){
+ const grid=document.getElementById('calendar-grid');if(!grid)return;
+ const title=document.getElementById('calendar-title'),week=document.getElementById('calendar-weekdays');
+ title.textContent=calendarMonth.toLocaleDateString(locale(),{month:'long',year:'numeric'});
+ const weekdays=currentLang==='en'?['Mon','Tue','Wed','Thu','Fri','Sat','Sun']:currentLang==='fr'?['Lun','Mar','Mer','Jeu','Ven','Sam','Dim']:['Lun','Mar','Mer','Gio','Ven','Sab','Dom'];week.innerHTML=weekdays.map(x=>`<span>${x}</span>`).join('');grid.innerHTML='';
+ const first=(calendarMonth.getDay()+6)%7,start=new Date(calendarMonth);start.setDate(1-first);const today=dayStart(new Date());
+ for(let i=0;i<42;i++){const d=new Date(start);d.setDate(start.getDate()+i);const btn=document.createElement('button');btn.type='button';btn.className='calendar-day';btn.innerHTML=`<span>${d.getDate()}</span><small>${money(rateFor(d))}</small>`;if(d.getMonth()!==calendarMonth.getMonth())btn.classList.add('outside');if(d<today){btn.classList.add('past');btn.disabled=true}else if(isUnavailable(d)){btn.classList.add('unavailable');btn.disabled=true}else{btn.addEventListener('click',()=>selectCalendarDate(d))}if(arrivalDate&&iso(d)===iso(arrivalDate))btn.classList.add('selected');if(departureDate&&iso(d)===iso(departureDate))btn.classList.add('selected');if(arrivalDate&&departureDate&&d>arrivalDate&&d<departureDate)btn.classList.add('in-range');grid.appendChild(btn)}
+ const fmt=d=>d?d.toLocaleDateString(locale(),{day:'2-digit',month:'short',year:'numeric'}):'—';document.getElementById('quote-arrival').textContent=fmt(arrivalDate);document.getElementById('quote-departure').textContent=fmt(departureDate);
+ const cta=document.getElementById('booking-whatsapp');if(arrivalDate&&departureDate){const nights=Math.round((departureDate-arrivalDate)/86400000);let stay=0;for(let d=new Date(arrivalDate);d<departureDate;d.setDate(d.getDate()+1))stay+=rateFor(d);document.getElementById('quote-nights').textContent=nights;document.getElementById('quote-stay').textContent=money(stay);document.getElementById('quote-total').textContent=money(stay+cfg.cleaningFee);cta.classList.toggle('disabled',nights<cfg.minimumNights);cta.href=`https://wa.me/${PHONE}?text=${encodeURIComponent(bookingMessage())}`;cta.target='_blank';cta.rel='noopener'}else{document.getElementById('quote-nights').textContent='—';document.getElementById('quote-stay').textContent='—';document.getElementById('quote-total').textContent='—';cta.classList.add('disabled');cta.href='#'}
+};
+document.getElementById('calendar-prev')?.addEventListener('click',()=>{calendarMonth.setMonth(calendarMonth.getMonth()-1);renderBookingCalendar()});
+document.getElementById('calendar-next')?.addEventListener('click',()=>{calendarMonth.setMonth(calendarMonth.getMonth()+1);renderBookingCalendar()});
+document.getElementById('reset-dates')?.addEventListener('click',()=>{arrivalDate=null;departureDate=null;renderBookingCalendar()});
+renderBookingCalendar();
