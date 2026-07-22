@@ -1,69 +1,103 @@
-# Les Diablerets Panorama
-
-Sito statico trilingue (italiano, francese e inglese), pronto per GitHub Pages.
-
-## 1. Personalizzazione obbligatoria
-
-Apri `script.js` e sostituisci:
-
-```js
+// Inserisci qui il numero WhatsApp completo di prefisso internazionale,
+// senza +, spazi o trattini. Esempio Svizzera: 41791234567
 const PHONE = '41790000000';
-```
 
-con il tuo numero WhatsApp completo di prefisso internazionale, senza `+`, spazi o trattini.
+const translations = {
+  it: {
+    pageTitle:'Les Diablerets Panorama', metaDescription:'Les Diablerets Panorama: appartamento privato di 44 m² con terrazza di 12 m², vista sul ghiacciaio e sulle piste.',
+    navApartment:'Appartamento',navLocation:'Posizione',navActivities:'Sport & relax',checkAvailability:'Disponibilità',heroEyebrow:'Appartamento privato · Les Diablerets',heroLead:'Un appartamento luminoso con terrazza e una vista aperta sul ghiacciaio e sulle piste: il punto di partenza ideale per vivere Les Diablerets tra sport, aria di montagna e momenti di relax.',discover:"Scopri l’appartamento",writeWhatsapp:'Scrivi su WhatsApp',statApartment:'m² appartamento',statTerrace:'m² terrazza',statSlopes:'min dalle piste',statShops:'min dai servizi',
+    apartmentEyebrow:"L’appartamento",apartmentTitle:'Compatto, luminoso<br>e ben posizionato.',apartmentText1:'Les Diablerets Panorama è un appartamento di 44 m² con una terrazza privata di 12 m² e una vista aperta sul ghiacciaio e sulle piste da sci.',apartmentText2:'È una base pratica per chi vuole alternare sport, passeggiate e momenti di riposo, senza dipendere dall’auto durante il soggiorno.',photoView:'Vista sul ghiacciaio e sulle piste',photoTerrace:'Terrazza privata di 12 m²',photoInterior:'Spazi semplici e funzionali',
+    locationEyebrow:'Posizione',locationTitle:'Tutto vicino.<br>Davvero.',shopsTitle:'Servizi quotidiani',shopsText:'Supermercati, panetterie, banca e ristoranti.',sportTitle:'Piscina, tennis e pattinaggio',sportText:'Piscina e tennis in estate, pista di pattinaggio in inverno.',slopesTitle:'Piste da sci',slopesText:'Impianti e piste raggiungibili comodamente a piedi.',stationTitle:'Stazione ferroviaria',stationText:'Collegamenti pratici per arrivare senza automobile.',gstaadTitle:'Gstaad',gstaadText:'Una delle località alpine più note della regione è raggiungibile in circa 25 minuti di auto.',
+    activitiesEyebrow:'Sport & relax',activitiesTitle:'Una base per muoversi.<br>Un posto per recuperare.',winterLabel:'Inverno',winterTitle:'Sci, neve e benessere',winterText:'Sci, pattinaggio, bob e passeggiate con le ciaspole. Per una pausa di benessere, i Bains de Lavey sono a circa 30 minuti di auto.',summerLabel:'Estate',summerTitle:'Montagna in movimento',summerText:'Escursioni, mountain bike, bici, arrampicata, parapendio, tennis e piscina: molte attività iniziano direttamente dal villaggio.',glacierTitle:'Glacier 3000 e Peak Walk by Tissot',glacierText:'In estate e in inverno, una visita al ghiacciaio e al ponte sospeso tra due vette è una delle esperienze più caratteristiche della zona.',saunaTitle:'Sauna nell’immobile',gymTitle:'Palestra nell’immobile',wellnessText:'Due servizi utili per rilassarsi o allenarsi senza uscire dall’edificio.',
+    contactEyebrow:'Per organizzare un soggiorno',contactTitle:'Date, disponibilità<br>e informazioni pratiche.',contactText:'Scrivimi direttamente su WhatsApp. Ti risponderò con disponibilità e dettagli.',openWhatsapp:'Apri WhatsApp',footerText:'Appartamento privato condiviso con amici e conoscenti.',privateSite:'Sito privato non indicizzato',mobileWhatsapp:'WhatsApp',whatsappAvailability:'Ciao! Vorrei sapere se Les Diablerets Panorama è disponibile e ricevere qualche informazione pratica.'
+  },
+  fr: {
+    pageTitle:'Les Diablerets Panorama',metaDescription:'Les Diablerets Panorama : appartement privé de 44 m² avec terrasse de 12 m², vue sur le glacier et les pistes.',
+    navApartment:'Appartement',navLocation:'Situation',navActivities:'Sport & détente',checkAvailability:'Disponibilités',heroEyebrow:'Appartement privé · Les Diablerets',heroLead:'Un appartement lumineux avec terrasse et une vue dégagée sur le glacier et les pistes : un point de départ idéal pour profiter des Diablerets entre sport, air de montagne et détente.',discover:'Découvrir l’appartement',writeWhatsapp:'Écrire sur WhatsApp',statApartment:'m² d’appartement',statTerrace:'m² de terrasse',statSlopes:'min des pistes',statShops:'min des services',
+    apartmentEyebrow:'L’appartement',apartmentTitle:'Compact, lumineux<br>et bien situé.',apartmentText1:'Les Diablerets Panorama est un appartement de 44 m² avec une terrasse privée de 12 m² et une vue dégagée sur le glacier et les pistes de ski.',apartmentText2:'C’est une base pratique pour alterner sport, promenades et repos, sans dépendre de la voiture pendant le séjour.',photoView:'Vue sur le glacier et les pistes',photoTerrace:'Terrasse privée de 12 m²',photoInterior:'Des espaces simples et fonctionnels',
+    locationEyebrow:'Situation',locationTitle:'Tout est proche.<br>Vraiment.',shopsTitle:'Services quotidiens',shopsText:'Supermarchés, boulangeries, banque et restaurants.',sportTitle:'Piscine, tennis et patinage',sportText:'Piscine et tennis en été, patinoire en hiver.',slopesTitle:'Pistes de ski',slopesText:'Remontées mécaniques et pistes facilement accessibles à pied.',stationTitle:'Gare ferroviaire',stationText:'Des liaisons pratiques pour arriver sans voiture.',gstaadTitle:'Gstaad',gstaadText:'L’une des stations alpines les plus connues de la région se trouve à environ 25 minutes en voiture.',
+    activitiesEyebrow:'Sport & détente',activitiesTitle:'Un point de départ actif.<br>Un lieu pour récupérer.',winterLabel:'Hiver',winterTitle:'Ski, neige et bien-être',winterText:'Ski, patinage, luge et balades en raquettes. Pour une pause bien-être, les Bains de Lavey sont à environ 30 minutes en voiture.',summerLabel:'Été',summerTitle:'La montagne en mouvement',summerText:'Randonnée, VTT, vélo, escalade, parapente, tennis et piscine : de nombreuses activités commencent directement au village.',glacierTitle:'Glacier 3000 et Peak Walk by Tissot',glacierText:'En été comme en hiver, la visite du glacier et du pont suspendu reliant deux sommets est l’une des expériences emblématiques de la région.',saunaTitle:'Sauna dans l’immeuble',gymTitle:'Salle de sport dans l’immeuble',wellnessText:'Deux équipements utiles pour se détendre ou s’entraîner sans quitter le bâtiment.',
+    contactEyebrow:'Pour organiser un séjour',contactTitle:'Dates, disponibilités<br>et informations pratiques.',contactText:'Écrivez-moi directement sur WhatsApp. Je vous répondrai avec les disponibilités et les détails.',openWhatsapp:'Ouvrir WhatsApp',footerText:'Appartement privé partagé avec des amis et des connaissances.',privateSite:'Site privé non indexé',mobileWhatsapp:'WhatsApp',whatsappAvailability:'Bonjour ! Je souhaite connaître les disponibilités de Les Diablerets Panorama et recevoir quelques informations pratiques.'
+  },
+  en: {
+    pageTitle:'Les Diablerets Panorama',metaDescription:'Les Diablerets Panorama: a private 44 m² apartment with a 12 m² terrace overlooking the glacier and ski slopes.',
+    navApartment:'Apartment',navLocation:'Location',navActivities:'Sport & relaxation',checkAvailability:'Availability',heroEyebrow:'Private apartment · Les Diablerets',heroLead:'A bright apartment with a terrace and open views of the glacier and ski slopes: an ideal base for enjoying Les Diablerets through sport, mountain air and downtime.',discover:'Discover the apartment',writeWhatsapp:'Message on WhatsApp',statApartment:'m² apartment',statTerrace:'m² terrace',statSlopes:'min to the slopes',statShops:'min to services',
+    apartmentEyebrow:'The apartment',apartmentTitle:'Compact, bright<br>and well located.',apartmentText1:'Les Diablerets Panorama is a 44 m² apartment with a private 12 m² terrace and open views over the glacier and ski slopes.',apartmentText2:'It is a practical base for combining sport, walks and downtime without relying on a car during your stay.',photoView:'Views over the glacier and slopes',photoTerrace:'Private 12 m² terrace',photoInterior:'Simple, functional spaces',
+    locationEyebrow:'Location',locationTitle:'Everything nearby.<br>Really.',shopsTitle:'Everyday services',shopsText:'Supermarkets, bakeries, a bank and restaurants.',sportTitle:'Swimming, tennis and skating',sportText:'Swimming and tennis in summer, ice skating in winter.',slopesTitle:'Ski slopes',slopesText:'Ski lifts and slopes are an easy walk away.',stationTitle:'Train station',stationText:'Practical connections make it easy to arrive without a car.',gstaadTitle:'Gstaad',gstaadText:'One of the region’s best-known Alpine destinations is around 25 minutes away by car.',
+    activitiesEyebrow:'Sport & relaxation',activitiesTitle:'A base for activity.<br>A place to recover.',winterLabel:'Winter',winterTitle:'Snow, sport and wellness',winterText:'Skiing, ice skating, sledging and snowshoe walks. For a wellness break, Les Bains de Lavey are around 30 minutes away by car.',summerLabel:'Summer',summerTitle:'The mountain in motion',summerText:'Hiking, mountain biking, cycling, climbing, paragliding, tennis and swimming: many activities begin right in the village.',glacierTitle:'Glacier 3000 and Peak Walk by Tissot',glacierText:'In both summer and winter, visiting the glacier and the suspension bridge linking two peaks is one of the area’s signature experiences.',saunaTitle:'Sauna in the building',gymTitle:'Gym in the building',wellnessText:'Two useful amenities for relaxing or training without leaving the building.',
+    contactEyebrow:'To arrange a stay',contactTitle:'Dates, availability<br>and practical information.',contactText:'Message me directly on WhatsApp. I will reply with availability and details.',openWhatsapp:'Open WhatsApp',footerText:'A private apartment shared with friends and acquaintances.',privateSite:'Private, non-indexed website',mobileWhatsapp:'WhatsApp',whatsappAvailability:'Hi! I would like to know whether Les Diablerets Panorama is available and receive some practical information.'
+  }
+};
 
-Esempio:
+function safeStorageGet(key) { try { return localStorage.getItem(key); } catch (_) { return null; } }
+function safeStorageSet(key, value) { try { localStorage.setItem(key, value); } catch (_) {} }
 
-```js
-const PHONE = '41791234567';
-```
+function applyLanguage(lang) {
+  const current = translations[lang] ? lang : 'it';
+  const t = translations[current];
+  document.documentElement.lang = current;
+  document.title = t.pageTitle;
+  const meta = document.querySelector('meta[name="description"]');
+  if (meta) meta.setAttribute('content', t.metaDescription);
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const value = t[el.dataset.i18n];
+    if (value) el.textContent = value;
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const value = t[el.dataset.i18nHtml];
+    if (value) el.innerHTML = value;
+  });
+  document.querySelectorAll('[data-lang]').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === current));
+  document.querySelectorAll('.js-whatsapp').forEach(link => {
+    const message = t[link.dataset.messageKey || 'whatsappAvailability'];
+    link.href = `https://wa.me/${PHONE}?text=${encodeURIComponent(message)}`;
+    link.target = '_blank';
+    link.rel = 'noopener';
+  });
+  safeStorageSet('ldpLang', current);
+}
 
-## 2. Sostituire le fotografie
+function init() {
+  const saved = safeStorageGet('ldpLang');
+  const browser = (navigator.language || 'it').slice(0, 2);
+  applyLanguage(saved || browser);
 
-Le immagini attuali sono dimostrative e vengono caricate da Unsplash. Per usare fotografie reali:
+  document.querySelectorAll('[data-lang]').forEach(btn => btn.addEventListener('click', () => applyLanguage(btn.dataset.lang)));
 
-1. crea una cartella `images`;
-2. inserisci le tue foto, per esempio `vista.jpg`, `terrazza.jpg`, `interno.jpg`;
-3. in `styles.css`, sostituisci gli indirizzi `https://images.unsplash.com/...` con percorsi come `images/vista.jpg`.
+  const year = document.getElementById('year');
+  if (year) year.textContent = new Date().getFullYear();
 
-## 3. Pubblicazione su GitHub Pages
+  const header = document.querySelector('.site-header');
+  if (header) window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 40), {passive:true});
 
-1. Accedi a GitHub e crea un nuovo repository pubblico, per esempio `les-diablerets-panorama`.
-2. Carica nella radice del repository questi file:
-   - `index.html`
-   - `styles.css`
-   - `script.js`
-   - `README.md`
-3. Apri `Settings` → `Pages`.
-4. In `Build and deployment`, scegli `Deploy from a branch`.
-5. Seleziona il branch `main` e la cartella `/ (root)`.
-6. Salva.
+  const menuButton = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.main-nav');
+  if (menuButton && nav) {
+    menuButton.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(open));
+    });
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      nav.classList.remove('open');
+      menuButton.setAttribute('aria-expanded', 'false');
+    }));
+  }
 
-Il sito sarà disponibile a un indirizzo simile a:
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    }), {threshold:0.08});
+    reveals.forEach(el => observer.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add('visible'));
+  }
+}
 
-`https://TUO-USERNAME.github.io/les-diablerets-panorama/`
-
-## Privacy
-
-Il sito contiene `noindex,nofollow`, quindi chiede ai motori di ricerca di non indicizzarlo. Non è però protetto da password: chi riceve il link può aprirlo e condividerlo.
-
-Non pubblicare nel sito codici di accesso, indirizzi completi o altre informazioni sensibili.
-
-## Crediti immagini esterne
-
-Le immagini panoramiche attualmente usate nelle sezioni principali provengono da fonti turistiche di Les Diablerets / Glacier 3000 e vengono caricate tramite URL esterni. Prima di una diffusione pubblica o commerciale, verificare le condizioni di utilizzo o sostituirle con fotografie personali.
-
-- Hero e sezione inverno: Glacier 3000 / Alpes Vaudoises
-- Sezione estate e contatti: The Glacier Hotel / Glacier 3000
-
-
-## Immagini integrate nel repository
-
-Le immagini principali sono salvate nella cartella `images/` e non dipendono da siti esterni:
-
-- `hero.webp` — Glacier 3000 / Peak Walk
-- `winter.webp` — cime innevate delle Alpi vodesi
-- `summer.webp` — villaggio e paesaggio estivo
-- `practical.webp` — panorama di Les Diablerets
-
-Sono visuali create appositamente per questa bozza e ispirate ai paesaggi di Les Diablerets e Glacier 3000. Per una versione definitiva e completamente fedele, possono essere sostituite con fotografie personali mantenendo gli stessi nomi dei file.
+try { init(); } catch (error) {
+  console.error('Site initialization error:', error);
+  document.documentElement.classList.remove('js');
+}
