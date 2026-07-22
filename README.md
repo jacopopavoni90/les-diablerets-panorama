@@ -1,57 +1,142 @@
-# Les Diablerets Panorama
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Les Diablerets Panorama: appartamento privato di 44 m² con terrazza di 12 m², vista sul ghiacciaio e sulle piste.">
+  <meta name="theme-color" content="#18332c">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta property="og:title" content="Les Diablerets Panorama">
+  <meta property="og:description" content="Appartamento privato con terrazza, vista sul ghiacciaio e tutto raggiungibile a piedi.">
+  <meta property="og:type" content="website">
+  <title>Les Diablerets Panorama</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Franklin:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Vai al contenuto</a>
 
-Sito statico trilingue (italiano, francese e inglese), pronto per GitHub Pages.
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="Les Diablerets Panorama">
+      <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M5 36 17 17l7 10 6-8 13 17"/><path d="M11 36h26"/></svg>
+      <span><strong>Les Diablerets</strong><small>Panorama</small></span>
+    </a>
 
-## 1. Personalizzazione obbligatoria
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Apri menu"><span></span><span></span></button>
 
-Apri `script.js` e sostituisci:
+    <nav class="main-nav" id="main-nav" aria-label="Navigazione principale">
+      <a href="#appartamento" data-i18n="navApartment">Appartamento</a>
+      <a href="#posizione" data-i18n="navLocation">Posizione</a>
+      <a href="#attivita" data-i18n="navActivities">Sport & relax</a>
+    </nav>
 
-```js
-const PHONE = '41790000000';
-```
+    <div class="header-actions">
+      <div class="language-switcher" aria-label="Seleziona lingua">
+        <button type="button" data-lang="it" class="active" aria-label="Italiano">IT</button>
+        <button type="button" data-lang="fr" aria-label="Français">FR</button>
+        <button type="button" data-lang="en" aria-label="English">EN</button>
+      </div>
+      <a class="header-cta js-whatsapp" href="#" data-message-key="whatsappAvailability" data-i18n="checkAvailability">Disponibilità</a>
+    </div>
+  </header>
 
-con il tuo numero WhatsApp completo di prefisso internazionale, senza `+`, spazi o trattini.
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-media" role="img" aria-label="Glacier 3000 e panorama alpino di Les Diablerets"></div>
+      <div class="hero-overlay"></div>
+      <small class="hero-credit">Photo © Glacier 3000</small>
+      <div class="hero-content page-shell">
+        <p class="eyebrow light" data-i18n="heroEyebrow">Appartamento privato · Les Diablerets</p>
+        <h1 id="hero-title">Les Diablerets<br><span>Panorama</span></h1>
+        <p class="hero-lead" data-i18n="heroLead">Un appartamento luminoso con terrazza e una vista aperta sul ghiacciaio e sulle piste: il punto di partenza ideale per vivere Les Diablerets tra sport, aria di montagna e momenti di relax.</p>
+        <div class="hero-buttons">
+          <a class="button button-primary" href="#appartamento" data-i18n="discover">Scopri l'appartamento</a>
+          <a class="button button-secondary js-whatsapp" href="#" data-message-key="whatsappAvailability" data-i18n="writeWhatsapp">Scrivi su WhatsApp</a>
+        </div>
+      </div>
+      <div class="hero-stats page-shell" aria-label="Caratteristiche principali">
+        <div><strong>44</strong><span data-i18n="statApartment">m² appartamento</span></div>
+        <div><strong>12</strong><span data-i18n="statTerrace">m² terrazza</span></div>
+        <div><strong>5</strong><span data-i18n="statSlopes">min dalle piste</span></div>
+        <div><strong>1</strong><span data-i18n="statShops">min dai servizi</span></div>
+      </div>
+    </section>
 
-Esempio:
+    <section class="intro section page-shell" id="appartamento">
+      <div class="section-heading reveal">
+        <p class="eyebrow" data-i18n="apartmentEyebrow">L'appartamento</p>
+        <h2 data-i18n-html="apartmentTitle">Compatto, luminoso<br>e ben posizionato.</h2>
+      </div>
+      <div class="intro-copy reveal">
+        <p data-i18n="apartmentText1">Les Diablerets Panorama è un appartamento di 44 m² con una terrazza privata di 12 m² e una vista aperta sul ghiacciaio e sulle piste da sci.</p>
+        <p data-i18n="apartmentText2">È una base pratica per chi vuole alternare sport, passeggiate e momenti di riposo, senza dipendere dall'auto durante il soggiorno.</p>
+      </div>
+    </section>
 
-```js
-const PHONE = '41791234567';
-```
+    <section class="gallery page-shell" aria-label="Galleria fotografica">
+      <figure class="gallery-main reveal"><span data-i18n="photoView">Vista sul ghiacciaio e sulle piste</span></figure>
+      <figure class="gallery-side gallery-terrace reveal"><span data-i18n="photoTerrace">Terrazza privata di 12 m²</span></figure>
+      <figure class="gallery-side gallery-interior reveal"><span data-i18n="photoInterior">Spazi semplici e funzionali</span></figure>
+    </section>
 
-## 2. Sostituire le fotografie
+    <section class="location section" id="posizione">
+      <div class="page-shell">
+        <div class="section-heading reveal">
+          <p class="eyebrow" data-i18n="locationEyebrow">Posizione</p>
+          <h2 data-i18n-html="locationTitle">Tutto vicino.<br>Davvero.</h2>
+        </div>
+        <div class="distance-grid">
+          <article class="distance-card reveal"><span class="distance">1 min</span><h3 data-i18n="shopsTitle">Servizi quotidiani</h3><p data-i18n="shopsText">Supermercati, panetterie, banca e ristoranti.</p></article>
+          <article class="distance-card reveal"><span class="distance">3 min</span><h3 data-i18n="sportTitle">Piscina, tennis e pattinaggio</h3><p data-i18n="sportText">Piscina e tennis in estate, pista di pattinaggio in inverno.</p></article>
+          <article class="distance-card reveal"><span class="distance">5 min</span><h3 data-i18n="slopesTitle">Piste da sci</h3><p data-i18n="slopesText">Impianti e piste raggiungibili comodamente a piedi.</p></article>
+          <article class="distance-card reveal"><span class="distance">5 min</span><h3 data-i18n="stationTitle">Stazione ferroviaria</h3><p data-i18n="stationText">Collegamenti pratici per arrivare senza automobile.</p></article>
+          <article class="distance-card distance-card-wide reveal"><span class="distance">25 min</span><h3 data-i18n="gstaadTitle">Gstaad</h3><p data-i18n="gstaadText">Una delle località alpine più note della regione è raggiungibile in circa 25 minuti di auto.</p></article>
+        </div>
+      </div>
+    </section>
 
-Le immagini attuali sono dimostrative e vengono caricate da Unsplash. Per usare fotografie reali:
+    <section class="activities section page-shell" id="attivita">
+      <div class="section-heading reveal">
+        <p class="eyebrow" data-i18n="activitiesEyebrow">Sport & relax</p>
+        <h2 data-i18n-html="activitiesTitle">Una base per muoversi.<br>Un posto per recuperare.</h2>
+      </div>
+      <div class="activity-layout">
+        <article class="activity activity-winter reveal" aria-label="Les Diablerets e Glacier 3000 in inverno"><span class="photo-location">Les Diablerets · Glacier 3000</span><div><p data-i18n="winterLabel">Inverno</p><h3 data-i18n="winterTitle">Sci, neve e benessere</h3><span data-i18n="winterText">Sci, pattinaggio, bob e passeggiate con le ciaspole. Per una pausa di benessere, i Bains de Lavey sono a circa 30 minuti di auto.</span></div></article>
+        <article class="activity activity-summer reveal" aria-label="Les Diablerets e la valle in estate"><span class="photo-location">Les Diablerets · estate</span><div><p data-i18n="summerLabel">Estate</p><h3 data-i18n="summerTitle">Montagna in movimento</h3><span data-i18n="summerText">Escursioni, mountain bike, bici, arrampicata, parapendio, tennis e piscina: molte attività iniziano direttamente dal villaggio.</span></div></article>
+      </div>
+      <div class="glacier-strip reveal">
+        <div><span>3000 m</span><strong data-i18n="glacierTitle">Glacier 3000 e Peak Walk by Tissot</strong></div>
+        <p data-i18n="glacierText">In estate e in inverno, una visita al ghiacciaio e al ponte sospeso tra due vette è una delle esperienze più caratteristiche della zona.</p>
+      </div>
+      <div class="wellness-strip reveal">
+        <div><span>01</span><strong data-i18n="saunaTitle">Sauna nell'immobile</strong></div>
+        <div><span>02</span><strong data-i18n="gymTitle">Palestra nell'immobile</strong></div>
+        <p data-i18n="wellnessText">Due servizi utili per rilassarsi o allenarsi senza uscire dall'edificio.</p>
+      </div>
+    </section>
 
-1. crea una cartella `images`;
-2. inserisci le tue foto, per esempio `vista.jpg`, `terrazza.jpg`, `interno.jpg`;
-3. in `styles.css`, sostituisci gli indirizzi `https://images.unsplash.com/...` con percorsi come `images/vista.jpg`.
+    <section class="contact">
+      <div class="contact-media"></div>
+      <div class="contact-overlay"></div>
+      <span class="contact-photo-location">Les Diablerets · panorama</span>
+      <div class="contact-content page-shell reveal">
+        <p class="eyebrow light" data-i18n="contactEyebrow">Per organizzare un soggiorno</p>
+        <h2 data-i18n-html="contactTitle">Date, disponibilità<br>e informazioni pratiche.</h2>
+        <p data-i18n="contactText">Scrivimi direttamente su WhatsApp. Ti risponderò con disponibilità e dettagli.</p>
+        <a class="button button-primary js-whatsapp" href="#" data-message-key="whatsappAvailability" data-i18n="openWhatsapp">Apri WhatsApp</a>
+      </div>
+    </section>
+  </main>
 
-## 3. Pubblicazione su GitHub Pages
+  <footer class="site-footer page-shell">
+    <a class="brand footer-brand" href="#top"><svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M5 36 17 17l7 10 6-8 13 17"/><path d="M11 36h26"/></svg><span><strong>Les Diablerets</strong><small>Panorama</small></span></a>
+    <p data-i18n="footerText">Appartamento privato condiviso con amici e conoscenti.</p>
+    <p class="footer-note">© <span id="year"></span> · <span data-i18n="privateSite">Sito privato non indicizzato</span></p>
+  </footer>
 
-1. Accedi a GitHub e crea un nuovo repository pubblico, per esempio `les-diablerets-panorama`.
-2. Carica nella radice del repository questi file:
-   - `index.html`
-   - `styles.css`
-   - `script.js`
-   - `README.md`
-3. Apri `Settings` → `Pages`.
-4. In `Build and deployment`, scegli `Deploy from a branch`.
-5. Seleziona il branch `main` e la cartella `/ (root)`.
-6. Salva.
-
-Il sito sarà disponibile a un indirizzo simile a:
-
-`https://TUO-USERNAME.github.io/les-diablerets-panorama/`
-
-## Privacy
-
-Il sito contiene `noindex,nofollow`, quindi chiede ai motori di ricerca di non indicizzarlo. Non è però protetto da password: chi riceve il link può aprirlo e condividerlo.
-
-Non pubblicare nel sito codici di accesso, indirizzi completi o altre informazioni sensibili.
-
-## Crediti immagini esterne
-
-Le immagini panoramiche attualmente usate nelle sezioni principali provengono da fonti turistiche di Les Diablerets / Glacier 3000 e vengono caricate tramite URL esterni. Prima di una diffusione pubblica o commerciale, verificare le condizioni di utilizzo o sostituirle con fotografie personali.
-
-- Hero e sezione inverno: Glacier 3000 / Alpes Vaudoises
-- Sezione estate e contatti: The Glacier Hotel / Glacier 3000
+  <a class="mobile-whatsapp js-whatsapp" href="#" data-message-key="whatsappAvailability" data-i18n="mobileWhatsapp">WhatsApp</a>
+  <script src="script.js"></script>
+</body>
+</html>
