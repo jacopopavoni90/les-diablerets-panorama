@@ -48,25 +48,3 @@ Il sito sarà disponibile a un indirizzo simile a:
 Il sito contiene `noindex,nofollow`, quindi chiede ai motori di ricerca di non indicizzarlo. Non è però protetto da password: chi riceve il link può aprirlo e condividerlo.
 
 Non pubblicare nel sito codici di accesso, indirizzi completi o altre informazioni sensibili.
-
-## Crediti immagini esterne
-
-Le immagini panoramiche attualmente usate nelle sezioni principali provengono da fonti turistiche di Les Diablerets / Glacier 3000 e vengono caricate tramite URL esterni. Prima di una diffusione pubblica o commerciale, verificare le condizioni di utilizzo o sostituirle con fotografie personali.
-
-- Hero e sezione inverno: Glacier 3000 / Alpes Vaudoises
-- Sezione estate e contatti: The Glacier Hotel / Glacier 3000
-
-
-## Immagini integrate nel repository
-
-Le immagini principali sono salvate nella cartella `images/` e non dipendono da siti esterni:
-
-- `hero.webp` — Glacier 3000 / Peak Walk
-- `winter.webp` — cime innevate delle Alpi vodesi
-- `summer.webp` — villaggio e paesaggio estivo
-- `practical.webp` — panorama di Les Diablerets
-
-Sono visuali create appositamente per questa bozza e ispirate ai paesaggi di Les Diablerets e Glacier 3000. Per una versione definitiva e completamente fedele, possono essere sostituite con fotografie personali mantenendo gli stessi nomi dei file.
-
-## Versione corretta
-Questa versione usa immagini locali, include `.nojekyll` per GitHub Pages e mantiene tutti i contenuti visibili anche se JavaScript viene bloccato.
