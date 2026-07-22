@@ -30,6 +30,7 @@
       <a href="#appartamento" data-i18n="navApartment">Appartamento</a>
       <a href="#posizione" data-i18n="navLocation">Posizione</a>
       <a href="#attivita" data-i18n="navActivities">Sport & relax</a>
+      <a href="#disponibilita" data-i18n="navAvailability">Disponibilità & prezzi</a>
     </nav>
 
     <div class="header-actions">
@@ -38,7 +39,7 @@
         <button type="button" data-lang="fr" aria-label="Français">FR</button>
         <button type="button" data-lang="en" aria-label="English">EN</button>
       </div>
-      <a class="header-cta js-whatsapp" href="#" data-message-key="whatsappAvailability" data-i18n="checkAvailability">Disponibilità</a>
+      <a class="header-cta" href="#disponibilita" data-i18n="checkAvailability">Disponibilità</a>
     </div>
   </header>
 
@@ -53,7 +54,7 @@
         <p class="hero-lead" data-i18n="heroLead">Un appartamento luminoso con terrazza e una vista aperta sul ghiacciaio e sulle piste: il punto di partenza ideale per vivere Les Diablerets tra sport, aria di montagna e momenti di relax.</p>
         <div class="hero-buttons">
           <a class="button button-primary" href="#appartamento" data-i18n="discover">Scopri l'appartamento</a>
-          <a class="button button-secondary js-whatsapp" href="#" data-message-key="whatsappAvailability" data-i18n="writeWhatsapp">Scrivi su WhatsApp</a>
+          <a class="button button-secondary" href="#disponibilita" data-i18n="checkDates">Controlla date e prezzi</a>
         </div>
       </div>
       <div class="hero-stats page-shell" aria-label="Caratteristiche principali">
@@ -103,8 +104,8 @@
         <h2 data-i18n-html="activitiesTitle">Una base per muoversi.<br>Un posto per recuperare.</h2>
       </div>
       <div class="activity-layout">
-        <article class="activity activity-winter reveal"><div><p data-i18n="winterLabel">Inverno</p><h3 data-i18n="winterTitle">Sci, neve e benessere</h3><span data-i18n="winterText">Sci, pattinaggio, bob e passeggiate con le ciaspole. Per una pausa di benessere, i Bains de Lavey sono a circa 30 minuti di auto.</span></div></article>
-        <article class="activity activity-summer reveal"><div><p data-i18n="summerLabel">Estate</p><h3 data-i18n="summerTitle">Montagna in movimento</h3><span data-i18n="summerText">Escursioni, mountain bike, bici, arrampicata, parapendio, tennis e piscina: molte attività iniziano direttamente dal villaggio.</span></div></article>
+        <article class="activity activity-winter reveal"><div><p data-i18n="winterLabel">Inverno</p><h3 data-i18n="winterTitle">Sci, neve e benessere</h3><span data-i18n="winterText">Sci, pattinaggio, bob e passeggiate con le ciaspole. Per una pausa di benessere, i Bains de Lavey sono a circa 30 minuti di auto.</span><div class="activity-links"><a href="https://www.alpesvaudoises.ch/fr/Z76/les-diablerets/destination-diablerets" target="_blank" rel="noopener" data-i18n="exploreDiablerets">Esplora Les Diablerets</a><a href="https://www.glacier3000.ch/fr/" target="_blank" rel="noopener" data-i18n="exploreGlacier">Scopri Glacier 3000</a></div></div></article>
+        <article class="activity activity-summer reveal"><div><p data-i18n="summerLabel">Estate</p><h3 data-i18n="summerTitle">Montagna in movimento</h3><span data-i18n="summerText">Escursioni, mountain bike, bici, arrampicata, parapendio, tennis e piscina: molte attività iniziano direttamente dal villaggio.</span><div class="activity-links"><a href="https://www.alpesvaudoises.ch/fr/Z76/les-diablerets/destination-diablerets" target="_blank" rel="noopener" data-i18n="exploreDiablerets">Esplora Les Diablerets</a><a href="https://www.glacier3000.ch/fr/" target="_blank" rel="noopener" data-i18n="exploreGlacier">Scopri Glacier 3000</a></div></div></article>
       </div>
       <div class="glacier-strip reveal">
         <div><span>3000 m</span><strong data-i18n="glacierTitle">Glacier 3000 e Peak Walk by Tissot</strong></div>
@@ -114,6 +115,39 @@
         <div><span>01</span><strong data-i18n="saunaTitle">Sauna nell'immobile</strong></div>
         <div><span>02</span><strong data-i18n="gymTitle">Palestra nell'immobile</strong></div>
         <p data-i18n="wellnessText">Due servizi utili per rilassarsi o allenarsi senza uscire dall'edificio.</p>
+      </div>
+    </section>
+
+
+    <section class="availability section" id="disponibilita">
+      <div class="page-shell">
+        <div class="availability-intro reveal">
+          <div class="section-heading">
+            <p class="eyebrow" data-i18n="availabilityEyebrow">Disponibilità & prezzi</p>
+            <h2 data-i18n-html="availabilityTitle">Scegli le date.<br>Calcola il soggiorno.</h2>
+          </div>
+          <div class="availability-copy">
+            <p data-i18n="availabilityText">Seleziona arrivo e partenza nel calendario. Il prezzo è indicativo e la prenotazione viene confermata personalmente via WhatsApp.</p>
+            <div class="price-chips"><span><strong>CHF 135</strong><small data-i18n="lowSeason">notte · bassa stagione</small></span><span><strong>CHF 175</strong><small data-i18n="highSeason">notte · alta stagione</small></span><span><strong>CHF 90</strong><small data-i18n="cleaningFee">pulizia finale</small></span></div>
+          </div>
+        </div>
+        <div class="booking-panel reveal">
+          <div class="calendar-card">
+            <div class="calendar-toolbar"><button id="calendar-prev" type="button" aria-label="Mese precedente">←</button><h3 id="calendar-title"></h3><button id="calendar-next" type="button" aria-label="Mese successivo">→</button></div>
+            <div class="calendar-weekdays" id="calendar-weekdays"></div>
+            <div class="calendar-grid" id="calendar-grid"></div>
+            <div class="calendar-legend"><span><i class="available-dot"></i><b data-i18n="available">Disponibile</b></span><span><i class="selected-dot"></i><b data-i18n="selected">Selezionato</b></span><span><i class="unavailable-dot"></i><b data-i18n="unavailable">Non disponibile</b></span></div>
+          </div>
+          <aside class="quote-card">
+            <p class="eyebrow" data-i18n="yourStay">Il tuo soggiorno</p>
+            <div class="quote-dates"><div><small data-i18n="arrival">Arrivo</small><strong id="quote-arrival">—</strong></div><div><small data-i18n="departure">Partenza</small><strong id="quote-departure">—</strong></div></div>
+            <div class="quote-lines"><p><span data-i18n="nights">Notti</span><strong id="quote-nights">—</strong></p><p><span data-i18n="stayPrice">Soggiorno</span><strong id="quote-stay">—</strong></p><p><span data-i18n="cleaning">Pulizia finale</span><strong>CHF 90</strong></p></div>
+            <div class="quote-total"><span data-i18n="estimatedTotal">Totale indicativo</span><strong id="quote-total">—</strong></div>
+            <p class="quote-note" data-i18n="quoteNote">Soggiorno minimo: 2 notti. Disponibilità e prezzo finale da confermare.</p>
+            <a class="button booking-cta disabled" id="booking-whatsapp" href="#" data-i18n="requestBooking">Richiedi la prenotazione</a>
+            <button class="reset-dates" id="reset-dates" type="button" data-i18n="resetDates">Cancella le date</button>
+          </aside>
+        </div>
       </div>
     </section>
 
@@ -136,6 +170,7 @@
   </footer>
 
   <a class="mobile-whatsapp js-whatsapp" href="#" data-message-key="whatsappAvailability" data-i18n="mobileWhatsapp">WhatsApp</a>
+  <script src="availability.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
